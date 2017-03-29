@@ -1,6 +1,8 @@
-# MongooseQueue
+# MongooseQueueEmbeded
 
-MongooseQueue is a NodeJS package that allows managing and processing Mongoose documents as payload in a queue.
+MongooseQueueEmbeded is a NodeJS package based on MongooseQueue project that allows managing and processing Mongoose documents as payload in a queue.
+In order to avoid to manage a diferent document to be deleted or modified after the job, with this embeded version, we can to sent a "DTO" to process
+in the job and then decide if it is necessary to access to original document or several documents in the database.
 Feel free to contribute and share issues you find or features you'd like to see.
 
 ## Requirements
@@ -13,7 +15,7 @@ When a job is fetched from the queue by calling the get method it is blocked for
 
 ### Initialization
 ```javascript
-var MongooseQueue = require('mongoose-queue').MongooseQueue;
+var MongooseQueue = require('mongoose-queue-embeded').MongooseQueue;
 ```
 
 ### Class instantiation
@@ -25,14 +27,16 @@ MongooseQueue.constructor(payloadModel, workerId = '', options = {})
 - payloadModel: The name of the Mongoose model used as payload.
 - workerId: A custom name for this instance/worker of the queue. Defaults to ''.
 - options: Additional options to configure the instance.
-	- payloadRefType: The mongoose type used for the _id field of your payload schema. Defaults to ObjectId.
+	- payloadRefType: The mongoose schema used to be embeded inside the message
 	- queueCollection: Name of the queues model/collection. Defaults to 'queue'.
 	- blockDuration: Time in ms a job is blocked, when a worker fetched it from the queue. Defaults to 30000.
 	- maxRetries: Maximum number of retries until a job is considered failed. Defaults to 5.
 #### Example
 ```javascript
+const Document = require('../document');
+
 var myOptions = {
-	payloadRefType: mongoose.Types.UUID,
+	payloadRefType: Document.schema,
 	queueCollection: 'queue',
 	blockDuration: 30000,
 	maxRetries: 5

@@ -12,16 +12,16 @@
     "mongodb",
     "queue"
   ],
-  "author": "Christian Kuhn <c.kuhn@qn-solutions.de> (http://www.qn-solutions.de)",
+  "author": "Rubén Sahagún",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/QN-Solutions/MongooseQueue.git"
+    "url": "https://github.com/rubenofen/MongooseQueue.git"
   },
   "bugs": {
-    "url": "https://github.com/QN-Solutions/MongooseQueue/issues"
+    "url": "https://github.com/rubenofen/MongooseQueue/issues"
   },
-  "homepage": "https://github.com/QN-Solutions/MongooseQueue",
+  "homepage": "https://github.com/rubenofen/MongooseQueue",
   "dependencies": {
     "mongoose": "^4.5.8",
     "underscore": "^1.8.3"
