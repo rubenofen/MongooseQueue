@@ -32,6 +32,31 @@ MongooseQueue.constructor(payloadModel, workerId = '', options = {})
 	- blockDuration: Time in ms a job is blocked, when a worker fetched it from the queue. Defaults to 30000.
 	- maxRetries: Maximum number of retries until a job is considered failed. Defaults to 5.
 #### Example
+document.js
+```javascript
+// grab the things we need
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// create a schema
+let itemSchema = new Schema({
+    col1: {
+        type: String,
+        required: true
+    },
+    col2: {
+        type: Date,
+        required: true
+    },
+    col3: String,
+    col4: String
+});
+
+// make this available to our users in our Node applications
+module.exports = mongoose.model('Document', itemSchema);
+```
+
+
 ```javascript
 const Document = require('../document');
 
